@@ -1,0 +1,6 @@
+# .gitignore
+/frontend/build/
+/backend/django/__pycache__/
+/backend/nodejs/node_modules/
+/env/
+/keys/
