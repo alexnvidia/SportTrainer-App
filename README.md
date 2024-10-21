@@ -49,5 +49,5 @@ Follow these steps to run the project on your local machine:
 ### **1. Clone the repository**
 
 ```bash
-git clone https://github.com/username/sporttrainer-app.git
+git clone git@github.com:alexnvidia/SportTrainer-App.git
 cd sporttrainer-app
