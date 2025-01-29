@@ -4,3 +4,62 @@
 /backend/nodejs/node_modules/
 /env/
 /keys/
+**/settings.py
+
+# Archivos de Python compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de entorno virtual
+venv/
+.env
+*.env
+**/env/
+
+# Configuración de la base de datos local (SQLite)
+db.sqlite3
+*.sqlite3
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos de migraciones generados
+**/migrations/** 
+!**/migrations/__init__.py  # Mantiene solo el archivo __init__.py
+
+# Archivos estáticos generados
+staticfiles/
+media/
+
+# Archivos de dependencias de paquetes
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Archivos de caché de Django
+*.cache
+*.mo
+*.pot
+
+# Archivos de compilación
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Archivos de herramientas de desarrollo
+.idea/
+.vscode/
+
+# PostgreSQL / MySQL dumps
+*.sql
+
+# Docker
+docker-compose.override.yml
+
+# Dependencias de Node.js
+node_modules/
+npm-debug.log
+yarn-error.log

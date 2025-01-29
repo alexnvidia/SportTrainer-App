@@ -1,0 +1,63 @@
+@startuml
+entity Usuario {
+  + id: UUID
+  + nombre: String
+  + email: Email
+  + rol: Enum
+  + perfil_publico: Boolean
+  + preferencias_calendario: Boolean
+}
+
+entity Cliente_Entrenador {
+  + id: UUID
+  + id_cliente: UUID (FK)
+  + id_entrenador: UUID (FK)
+}
+
+entity Sesion {
+  + id: UUID
+  + id_entrenador: UUID (FK)
+  + id_cliente: UUID (FK)
+  + fecha_hora: DateTime
+  + estado: Enum
+  + anotaciones: Texto
+  + calificacion: Integer
+  + agregado_calendario: Boolean
+  + enlace_calendario: Texto
+}
+
+entity Historial {
+  + id: UUID
+  + id_usuario: UUID (FK)
+  + fecha_inicio: DateTime
+  + fecha_fin: DateTime
+}
+
+entity Mensaje {
+  + id: UUID
+  + id_remitente: UUID (FK)
+  + id_destinatario: UUID (FK)
+  + contenido: Texto
+  + fecha_envio: DateTime
+  + estado: Enum
+}
+
+entity Notificacion {
+  + id: UUID
+  + id_usuario: UUID (FK)
+  + contenido: Texto
+  + fecha_envio: DateTime
+  + tipo: Enum
+}
+
+Usuario ||--o{ Cliente_Entrenador : "1"
+Cliente_Entrenador }|--|| Usuario : "*"
+Usuario ||--o{ Sesion : "1"
+Sesion }|--|| Usuario : "*"
+Usuario ||--o{ Historial : "1"
+Usuario ||--o{ Mensaje : "1"
+Mensaje }|--|| Usuario : "*"
+Usuario ||--o{ Notificacion : "1"
+Notificacion }|--|| Usuario : "*"
+
+@enduml

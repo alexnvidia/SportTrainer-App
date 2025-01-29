@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="b0rZfIuFLvJw5v3TYAtw">
+    <mxGraphModel dx="967" dy="649" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="Usuario" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="90" y="60" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="id: UUID&#10;nombre: String&#10;email: Email&#10;rol: Enum&#10;perfil_publico: Boolean&#10;preferencias_calendario: Boolean" style="group" vertex="1" connectable="0" parent="2">
+          <mxGeometry width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="Cliente_Entrenador" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="90" y="220" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="id: UUID&#10;id_cliente: UUID (FK)&#10;id_entrenador: UUID (FK)" style="group" vertex="1" connectable="0" parent="4">
+          <mxGeometry width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Sesion" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="300" y="60" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="id: UUID&#10;id_entrenador: UUID (FK)&#10;id_cliente: UUID (FK)&#10;fecha_hora: DateTime&#10;estado: Enum&#10;anotaciones: Texto&#10;calificacion: Integer&#10;agregado_calendario: Boolean&#10;enlace_calendario: Texto" style="group" vertex="1" connectable="0" parent="6">
+          <mxGeometry width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="Historial" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="300" y="220" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="id: UUID&#10;id_usuario: UUID (FK)&#10;fecha_inicio: DateTime&#10;fecha_fin: DateTime" style="group" vertex="1" connectable="0" parent="8">
+          <mxGeometry width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Mensaje" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="510" y="60" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="id: UUID&#10;id_remitente: UUID (FK)&#10;id_destinatario: UUID (FK)&#10;contenido: Texto&#10;fecha_envio: DateTime&#10;estado: Enum" style="group" vertex="1" connectable="0" parent="10">
+          <mxGeometry width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Notificacion" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="510" y="220" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="id: UUID&#10;id_usuario: UUID (FK)&#10;contenido: Texto&#10;fecha_envio: DateTime&#10;tipo: Enum" style="group" vertex="1" connectable="0" parent="12">
+          <mxGeometry width="100" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="b0rZfIuFLvJw5v3TYAtw">
+    <mxGraphModel dx="967" dy="649" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Entities -->
+        <mxCell id="2" value="User" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="330" y="80" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="id: UUID&#10;name: String&#10;email: Email&#10;role: Enum&#10;public_profile: Boolean&#10;calendar_preferences: Boolean" style="group" vertex="1" connectable="0" parent="2">
+          <mxGeometry width="100" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="4" value="Client_Trainer" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="90" y="240" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="id: UUID&#10;client_id: UUID (FK)&#10;trainer_id: UUID (FK)" style="group" vertex="1" connectable="0" parent="4">
+          <mxGeometry width="100" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="6" value="Session" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="330" y="240" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="id: UUID&#10;trainer_id: UUID (FK)&#10;client_id: UUID (FK)&#10;date_time: DateTime&#10;status: Enum&#10;notes: Text&#10;rating: Integer&#10;added_to_calendar: Boolean&#10;calendar_link: Text" style="group" vertex="1" connectable="0" parent="6">
+          <mxGeometry width="100" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="8" value="History" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="550" y="80" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="id: UUID&#10;user_id: UUID (FK)&#10;start_date: DateTime&#10;end_date: DateTime" style="group" vertex="1" connectable="0" parent="8">
+          <mxGeometry width="100" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="10" value="Message" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="550" y="240" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="id: UUID&#10;sender_id: UUID (FK)&#10;receiver_id: UUID (FK)&#10;content: Text&#10;send_date: DateTime&#10;status: Enum" style="group" vertex="1" connectable="0" parent="10">
+          <mxGeometry width="100" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="12" value="Notification" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="550" y="400" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="id: UUID&#10;user_id: UUID (FK)&#10;content: Text&#10;send_date: DateTime&#10;type: Enum" style="group" vertex="1" connectable="0" parent="12">
+          <mxGeometry width="100" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships (with Cardinalities) -->
+        
+        <!-- User ↔ Client_Trainer (1:1) -->
+        <mxCell id="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=bottom;exitDx=-10;exitDy=10;" edge="1" parent="1" source="2" target="4">
+          <mxGeometry relative="1" as="geometry" />
+          <mxCell value="1:1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;" edge="1" parent="1" />
+        </mxCell>
+
+        <!-- User ↔ Session (1:n) -->
+        <mxCell id="15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=bottom;exitDx=-10;exitDy=10;" edge="1" parent="1" source="2" target="6">
+          <mxGeometry relative="1" as="geometry" />
+          <mxCell value="1:n" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;" edge="1" parent="1" />
+        </mxCell>
+
+        <!-- Client_Trainer ↔ Session (1:n) -->
+        <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=bottom;exitDx=-10;exitDy=10;" edge="1" parent="1" source="4" target="6">
+          <mxGeometry relative="1" as="geometry" />
+          <mxCell value="1:n" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;" edge="1" parent="1" />
+        </mxCell>
+
+        <!-- User ↔ History (1:n) -->
+        <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=bottom;exitDx=-10;exitDy=10;" edge="1" parent="1" source="2" target="8">
+          <mxGeometry relative="1" as="geometry" />
+          <mxCell value="1:n" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;" edge="1" parent="1" />
+        </mxCell>
+
+        <!-- User ↔ Message (1:n) -->
+        <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=bottom;exitDx=-10;exitDy=10;" edge="1" parent="1" source="2" target="10">
+          <mxGeometry relative="1" as="geometry" />
+          <mxCell value="1:n" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;" edge="1" parent="1" />
+        </mxCell>
+
+        <!-- User ↔ Notification (1:n) -->
+        <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=bottom;exitDx=-10;exitDy=10;" edge="1" parent="1" source="2" target="12">
+          <mxGeometry relative="1" as="geometry" />
+          <mxCell value="1:n" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonal=1;jettySize=auto;html=1;" edge="1" parent="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
