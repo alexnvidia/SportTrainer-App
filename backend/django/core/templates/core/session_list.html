@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Sesiones{% endblock %}
+
+{% block content %}
+<h1>Sesiones</h1>
+<a href="{% url 'session-create' %}" class="btn btn-primary mb-3">Crear Sesión</a>
+<ul class="list-group">
+    {% for session in sessions %}
+    <li class="list-group-item">
+        {{ session.client.user.username }} con {{ session.trainer.user.username }} - {{ session.date }}
+        <a href="{% url 'session-update' session.pk %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'session-delete' session.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$f3azBdiCxKARdLYmyW7UkC$qdefHzluwlRZkkfZ9KYqnClUOxhnmeJKtB9UUXYZA4w=",
+        "last_login": "2025-02-12T09:24:03.350Z",
+        "is_superuser": true,
+        "username": "afernandez",
+        "first_name": "",
+        "last_name": "",
+        "email": "afernandezpovedano@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-01-29T11:11:48.975Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

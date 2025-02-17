@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Calificaciones{% endblock %}
+
+{% block content %}
+<h1>Calificaciones</h1>
+<a href="{% url 'rating-create' %}" class="btn btn-primary mb-3">Crear Calificación</a>
+<ul class="list-group">
+    {% for rating in ratings %}
+    <li class="list-group-item">
+        {{ rating.session.client.user.username }} - Puntuación: {{ rating.rating }}
+        <a href="{% url 'rating-update' rating.pk %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'rating-delete' rating.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

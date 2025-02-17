@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Mensajes{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Mensajes</h1>
+<a href="{% url 'message-create' %}" class="btn btn-primary mb-3">Crear Mensaje</a>
+
+<div class="row">
+    {% for message in messages %}
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">
+                    De: {{ message.sender.username }} a {{ message.receiver.username }}
+                </h6>
+                <p class="card-text border p-3 bg-light">
+                    {{ message.content }}
+                </p>
+                <small class="text-muted">{{ message.timestamp }}</small>
+                <div class="mt-2">
+                    <a href="{% url 'message-update' message.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'message-delete' message.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

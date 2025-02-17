@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Lista de Clientes{% endblock %}
+
+{% block content %}
+<h1>Clientes</h1>
+<a href="{% url 'client-create' %}" class="btn btn-primary mb-3">Crear Cliente</a>
+<ul class="list-group">
+    {% for client in clients %}
+    <li class="list-group-item">
+        {{ client.user.username }} - Entrenador: {{ client.trainer.user.username }}
+        <a href="{% url 'client-update' client.pk %}" class="btn btn-sm btn-warning">Editar</a>
+        <a href="{% url 'client-delete' client.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
