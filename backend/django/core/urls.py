@@ -11,10 +11,13 @@ from .views import (
     # Message Views
     MessageListView, MessageCreateView, MessageUpdateView, MessageDeleteView,
     # Login Views
-    register_trainer, register_client,
+    register_trainer, register_client,DashboardView,home
 )
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
+    # Home URL
+    path('', home, name='home'),
     # Trainer URLs
     path('trainers/', TrainerListView.as_view(), name='trainer-list'),
     path('trainers/create/', TrainerCreateView.as_view(), name='trainer-create'),
@@ -45,7 +48,13 @@ urlpatterns = [
     path('messages/<int:pk>/update/', MessageUpdateView.as_view(), name='message-update'),
     path('messages/<int:pk>/delete/', MessageDeleteView.as_view(), name='message-delete'),
 
-    # Login URLs
+    # Register URLs
     path('register/trainer/', register_trainer, name='register_trainer'),
     path('register/client/', register_client, name='register_client'),
+
+    #login URLs
+    path('login/', LoginView.as_view(template_name='core/auth/login.html'), name='login'),
+    path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
+
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
 ]

@@ -24,13 +24,20 @@ class TrainerForm(forms.ModelForm):
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ['user','trainer', 'profile_picture']
+        fields = ['user','bio','phone','trainer', 'profile_picture']
     
     def clean_trainer(self):
         trainer = self.cleaned_data.get('trainer')
         if not trainer:
             raise forms.ValidationError("A trainer must be assigned.")
         return trainer
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        if not phone.isdigit():
+            raise forms.ValidationError("Phone number must contain only digits.")
+        if len(phone) < 10:
+            raise forms.ValidationError("Phone number must be at least 10 digits long.")
+        return phone
 
 # Session Form
 class SessionForm(forms.ModelForm):

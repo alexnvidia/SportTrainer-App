@@ -17,6 +17,8 @@ class Trainer(models.Model):
 
 class Client(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
     trainer = models.ForeignKey(Trainer, on_delete=models.SET_NULL, null=True, related_name='clients')
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
 

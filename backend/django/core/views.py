@@ -7,6 +7,8 @@ from .models import Trainer, Client, Session, Rating, Message
 from .forms import TrainerForm, ClientForm, SessionForm, RatingForm, MessageForm, UserRegistrationForm, TrainerRegistrationForm, ClientRegistrationForm
 from django.contrib.auth import login
 
+
+
 # Trainer Views
 class TrainerListView(LoginRequiredMixin, ListView):
     model = Trainer
@@ -122,6 +124,20 @@ class MessageDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'core/message_confirm_delete.html'
     success_url = reverse_lazy('message-list')
 
+class DashboardView(View):
+    def get(self, request):
+        user = request.user
+        context = {}
+
+        if hasattr(user, 'trainer'):
+            context['trainer'] = user.trainer
+            context['clients'] = user.trainer.clients.all()
+        elif hasattr(user, 'client'):
+            context['client'] = user.client
+            context['trainers'] = Trainer.objects.all()
+
+        return render(request, 'core/dashboard.html', context)
+
 def register_trainer(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
@@ -153,3 +169,8 @@ def register_client(request):
     else:
         user_form = UserRegistrationForm()
     return render(request, 'core/register_client.html', {'user_form': user_form})
+
+def home(request):
+    return render(request, 'core/home.html')
+
+

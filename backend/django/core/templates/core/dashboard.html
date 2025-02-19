@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Dashboard</h2>
+
+    {% if trainer %}
+        <h3>Bienvenido, Entrenador {{ trainer.user.username }}</h3>
+        <h4>Tus Clientes:</h4>
+        <ul>
+            {% for client in clients %}
+                <li>{{ client.user.username }}</li>
+            {% endfor %}
+        </ul>
+    {% elif client %}
+        <h3>Bienvenido, {{ client.user.username }}</h3>
+        <h4>Entrenadores disponibles:</h4>
+        <ul>
+            {% for trainer in trainers %}
+                <li>{{ trainer.user.username }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tienes un perfil asociado.</p>
+    {% endif %}
+</div>
+{% endblock %}
